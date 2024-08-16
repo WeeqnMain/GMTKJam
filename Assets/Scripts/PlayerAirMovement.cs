@@ -31,7 +31,6 @@ public class PlayerAirMovement : MonoBehaviour
         }
         moveDirection = Vector2.zero;
 
-        SetVisuals();
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -61,6 +60,8 @@ public class PlayerAirMovement : MonoBehaviour
         {
             LimitVelocity();
         }
+
+        SetVisuals();
     }
 
     private void SetVisuals()
