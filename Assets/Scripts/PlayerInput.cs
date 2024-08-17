@@ -21,9 +21,10 @@ public class PlayerInput : MonoBehaviour
     {
         return new FrameInput
         {
+            Move = _move.ReadValue<Vector2>(),
             JumpDown = _jump.WasPressedThisFrame(),
             JumpHeld = _jump.IsPressed(),
-            Move = _move.ReadValue<Vector2>()
+            JumpReleased = _jump.WasReleasedThisFrame()
         };
     }
 
@@ -32,6 +33,6 @@ public class PlayerInput : MonoBehaviour
         public Vector2 Move;
         public bool JumpDown;
         public bool JumpHeld;
-        public bool DashDown;
+        public bool JumpReleased;
     }
 }

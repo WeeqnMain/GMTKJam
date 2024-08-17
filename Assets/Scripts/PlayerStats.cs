@@ -10,18 +10,21 @@ namespace TarodevController
     public class PlayerStats : ScriptableObject
     {
         // Setup
-        [Header("Setup")] public LayerMask PlayerLayer;
+        [Header("Setup")] 
+        public LayerMask PlayerLayer;
         public LayerMask CollisionLayers;
         public CharacterSize CharacterSize;
       
         // Controller Setup
-        [Header("Controller Setup"), Space] public float VerticalDeadZoneThreshold = 0.3f;
+        [Header("Controller Setup"), Space] 
+        public float VerticalDeadZoneThreshold = 0.3f;
         public double HorizontalDeadZoneThreshold = 0.1f;
         [Tooltip("Velocity = smoother, but can be occasionally unreliable on jagged terrain. Immediate = Occasionally jittery, but stable")] 
         public PositionCorrectionMode PositionCorrectionMode = PositionCorrectionMode.Velocity;
 
         // Movement
-        [Header("Movement"), Space] public float BaseSpeed = 9;
+        [Header("Movement"), Space] 
+        public float BaseSpeed = 9;
         public float Acceleration = 50;
         public float Friction = 30;
         public float AirFrictionMultiplier = 0.5f;
@@ -29,15 +32,21 @@ namespace TarodevController
         public float MaxWalkableSlope = 50;
 
         // Jump
-        [Header("Jump"), Space] public float ExtraConstantGravity = 40;
+        [Header("Jump"), Space] 
+        public float ExtraConstantGravity = 40;
         public float BufferedJumpTime = 0.15f;
         public float CoyoteTime = 0.15f;
         public float JumpPower = 20;
         public float EndJumpEarlyExtraForceMultiplier = 3;
         public int MaxAirJumps = 1;
 
+        //Glide
+        [Header("Glide"), Space]
+        public float MaxVelocityOnFalling;
+
         // Walls
-        [Header("Walls"), Space] public bool AllowWalls;
+        [Header("Walls"), Space] 
+        public bool AllowWalls;
         public LayerMask ClimbableLayer;
         public float WallJumpTotalInputLossTime = 0.2f;
         public float WallJumpInputLossReturnTime = 0.5f;

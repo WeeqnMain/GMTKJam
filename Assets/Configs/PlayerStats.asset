@@ -22,7 +22,7 @@ MonoBehaviour:
     Height: 0.95
     Width: 0.6
     StepHeight: 0.05
-    RayInset: 0.2
+    RayInset: 0.055
   VerticalDeadZoneThreshold: 0.3
   HorizontalDeadZoneThreshold: 0.10000000149011612
   PositionCorrectionMode: 0
@@ -37,7 +37,8 @@ MonoBehaviour:
   CoyoteTime: 0.15
   JumpPower: 20
   EndJumpEarlyExtraForceMultiplier: 3
-  MaxAirJumps: 1
+  MaxAirJumps: 0
+  MaxVelocityOnFalling: 0.5
   AllowWalls: 0
   ClimbableLayer:
     serializedVersion: 2

@@ -1087,9 +1087,9 @@ GameObject:
   - component: {fileID: 1719351712}
   - component: {fileID: 1719351711}
   - component: {fileID: 1719351716}
-  - component: {fileID: 1719351715}
-  - component: {fileID: 1719351714}
-  - component: {fileID: 1719351713}
+  - component: {fileID: 1719351719}
+  - component: {fileID: 1719351718}
+  - component: {fileID: 1719351717}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -1115,7 +1115,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1719351711
 BoxCollider2D:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1161,7 +1161,7 @@ BoxCollider2D:
 --- !u!50 &1719351712
 Rigidbody2D:
   serializedVersion: 4
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1170,7 +1170,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -1185,46 +1185,9 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1719351713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719351708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc4321a51857a8c4aa886eb5d241f06f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Stats>k__BackingField: {fileID: 11400000, guid: a246e9c5badb70a4a9ff2bc83a474c91, type: 2}
-  _drawGizmos: 1
---- !u!114 &1719351714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719351708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a47ff4ac963ebef41933fb869822ec22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!247 &1719351715
-ConstantForce2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719351708}
-  m_Enabled: 1
-  m_Force: {x: 0, y: 0}
-  m_RelativeForce: {x: 0, y: 0}
-  m_Torque: 0
 --- !u!70 &1719351716
 CapsuleCollider2D:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1257,6 +1220,43 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.475}
   m_Size: {x: 0.56, y: 0.90999997}
   m_Direction: 0
+--- !u!114 &1719351717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719351708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4321a51857a8c4aa886eb5d241f06f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Stats>k__BackingField: {fileID: 11400000, guid: a246e9c5badb70a4a9ff2bc83a474c91, type: 2}
+  _drawGizmos: 1
+--- !u!114 &1719351718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719351708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47ff4ac963ebef41933fb869822ec22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!247 &1719351719
+ConstantForce2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719351708}
+  m_Enabled: 1
+  m_Force: {x: 0, y: 0}
+  m_RelativeForce: {x: 0, y: 0}
+  m_Torque: 0
 --- !u!1 &1762357006
 GameObject:
   m_ObjectHideFlags: 0
