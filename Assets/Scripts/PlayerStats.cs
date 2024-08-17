@@ -133,7 +133,6 @@ namespace TarodevController
 
     public struct GeneratedCharacterSize
     {
-        // Standing
         public float Height;
         public float Width;
         public float StepHeight;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TarodevController;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(CapsuleCollider2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
 public class PlayerController : MonoBehaviour
 {
     #region References
@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public bool Active { get; private set; } = true;
     public Vector2 GroundNormal { get; private set; }
     public bool IsGrounded { get; private set; }
+    public bool IsGliding { get; private set; }
     public Vector2 Velocity { get; private set; }
     public int WallDirection { get; private set; }
 
@@ -116,18 +117,15 @@ public class PlayerController : MonoBehaviour
             new Vector3(_character.StandingColliderSize.x + CharacterSize.COLLIDER_EDGE_RADIUS * 2 + Stats.WallDetectorRange, _character.Height - 0.1f));
 
         _rigidbody = GetComponent<Rigidbody2D>();
-        _rigidbody.hideFlags = HideFlags.None;
 
         // Primary collider
         _collider = GetComponent<BoxCollider2D>();
         _collider.edgeRadius = CharacterSize.COLLIDER_EDGE_RADIUS;
-        _collider.hideFlags = HideFlags.None;
         _collider.sharedMaterial = _rigidbody.sharedMaterial;
         _collider.enabled = true;
 
         // Airborne collider
         _airborneCollider = GetComponent<CapsuleCollider2D>();
-        _airborneCollider.hideFlags = HideFlags.None;
         _airborneCollider.size = new Vector2(_character.Width - SKIN_WIDTH * 2, _character.Height - SKIN_WIDTH * 2);
         _airborneCollider.offset = new Vector2(0, _character.Height / 2);
         _airborneCollider.sharedMaterial = _rigidbody.sharedMaterial;
@@ -151,19 +149,19 @@ public class PlayerController : MonoBehaviour
             _timeJumpWasPressed = Time.time;
         }
 
-        bool lastGlidingState = _isGliding;
+        bool lastGlidingState = IsGliding;
         if (_frameInput.JumpDown && !IsGrounded)
         {
-            _isGliding = true;
+            IsGliding = true;
         }
         if (_frameInput.JumpReleased || IsGrounded)
         {
-            _isGliding = false;
+            IsGliding = false;
         }
 
-        if (lastGlidingState != _isGliding)
+        if (lastGlidingState != IsGliding)
         {
-            if (_isGliding) GlidingBegun?.Invoke();
+            if (IsGliding) GlidingBegun?.Invoke();
             else GlidingEnded?.Invoke();
         } 
     }
@@ -305,7 +303,7 @@ public class PlayerController : MonoBehaviour
 
     private void SetColliderMode(ColliderMode mode)
     {
-        _airborneCollider.enabled = mode == ColliderMode.Airborne;
+        //_airborneCollider.enabled = mode == ColliderMode.Airborne;
 
         switch (mode)
         {
@@ -526,7 +524,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        var extraForce = new Vector2(0, IsGrounded && !_isGliding ? 0 : -Stats.ExtraConstantGravity * (_endedJumpEarly && Velocity.y > 0 ? Stats.EndJumpEarlyExtraForceMultiplier : 1));
+        var extraForce = new Vector2(0, IsGrounded && !IsGliding ? 0 : -Stats.ExtraConstantGravity * (_endedJumpEarly && Velocity.y > 0 ? Stats.EndJumpEarlyExtraForceMultiplier : 1));
         _constantForce.force = extraForce * _rigidbody.mass;
 
         var targetSpeed = _hasInputThisFrame ? Stats.BaseSpeed : 0;
@@ -590,11 +588,9 @@ public class PlayerController : MonoBehaviour
 
     #region Glide
 
-    private bool _isGliding;
-
     private void Glide()
     {
-        if (_isGliding)
+        if (IsGliding)
         {
             ExecuteGlide();
         }

@@ -66,14 +66,4 @@ public class PlayerVisuals : MonoBehaviour
     {
         _animator.SetBool(IsFalling, false);
     }
-
-    public void SetDirectionLeft()
-    {
-        transform.localScale = new Vector3(-1, 1, 1);
-    }
-
-    public void SetDirectionRight()
-    {
-        transform.localScale = Vector3.one;
-    }
 }
