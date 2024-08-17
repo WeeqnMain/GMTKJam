@@ -148,6 +148,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""eb4012ab-9990-4825-b98d-ecd769a49eeb"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""19f4a3a7-3e3d-4e43-bccb-dbbfe723a1ae"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
