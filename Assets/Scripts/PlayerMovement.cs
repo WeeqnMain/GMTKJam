@@ -5,18 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    // The speed at which the player moves
-    public float movementSpeedOnGround;
-    
-    // The speed at which player is able to move in air, while not flying
-    public float movementSpeedInAir;
-    
-    // The strength of player's jump
-    public float jumpStrength;
+    [SerializeField] PlayerVisuals playerVisuals;
+    [SerializeField] float movementSpeedOnGround;     // The speed at which the player moves
+    [SerializeField] float movementSpeedInAir;     // The speed at which player is able to move in air, while not flying
+    [SerializeField] float jumpStrength;     // The strength of player's jump
 
 
-    // The object's rigidbody
     Rigidbody2D playerRigidbody;
+    bool isInAir;
 
     void Start()
     {
@@ -29,40 +25,31 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Checking, if the player is on the ground
-        if(playerRigidbody.velocity.y == 0)
-        {
-            // Jumping
-            if(Input.GetKey(KeyCode.Space))
-            {
-                playerRigidbody.AddForce(Vector2.up * playerRigidbody.mass * jumpStrength);
-            }
+        // Checking, whether the player is not on the ground
+        isInAir = playerRigidbody.velocity.y != 0;
 
-            // Movement on the ground
-            if(Input.GetKey(KeyCode.D))
-            {
-                playerRigidbody.velocity = Vector2.right * movementSpeedOnGround;
-            }
-            else if(Input.GetKeyDown(KeyCode.A))
-            {
-                playerRigidbody.velocity = Vector2.left * movementSpeedOnGround;
-            }
-            else
-            {
-                playerRigidbody.velocity = Vector2.zero;
-            }
-        }
-        else
+        // Movement on the ground
+        if(Input.GetKey(KeyCode.D))
         {
-            // In-air movement
-            if(Input.GetKey(KeyCode.D))
-            {
-                playerRigidbody.AddForce(Vector2.right * playerRigidbody.mass * movementSpeedInAir);
-            }
-            if(Input.GetKey(KeyCode.A))
-            {
-                playerRigidbody.AddForce(Vector2.left * playerRigidbody.mass * movementSpeedInAir);
-            }
+            playerVisuals.SetDirectionRight();
+            if(!isInAir) playerRigidbody.velocity = Vector2.right * movementSpeedOnGround;
+            else playerRigidbody.AddForce(Vector2.right * playerRigidbody.mass * movementSpeedInAir);
+        }
+        else if(Input.GetKeyDown(KeyCode.A))
+        {
+            playerVisuals.SetDirectionLeft();
+            if(!isInAir) playerRigidbody.velocity = Vector2.left * movementSpeedOnGround;
+            else playerRigidbody.AddForce(Vector2.left * playerRigidbody.mass * movementSpeedInAir);
+        }
+        else if(!isInAir)
+        {
+            playerRigidbody.velocity = Vector2.zero;
+        }
+
+        // Jumping
+        if(Input.GetKey(KeyCode.Space) && !isInAir)
+        {
+            playerRigidbody.AddForce(Vector2.up * playerRigidbody.mass * jumpStrength);
         }
     }
 }
