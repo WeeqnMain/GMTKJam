@@ -28,7 +28,6 @@ public class PlayerGroundMovement : MonoBehaviour
         // Checking, whether the player is not on the ground
         isInAir = playerRigidbody.velocity.y != 0;
 
-        // Movement on the ground
         if(Input.GetKey(KeyCode.D))
         {
             playerVisuals.SetDirectionRight();
