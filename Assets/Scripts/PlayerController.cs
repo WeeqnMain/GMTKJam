@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private BoxCollider2D _collider;
     private CapsuleCollider2D _airborneCollider;
     private ConstantForce2D _constantForce;
-    private Rigidbody2D _rb;
+    private Rigidbody2D _rigidbody;
     private PlayerInput _playerInput;
 
     #endregion
@@ -27,8 +27,6 @@ public class PlayerController : MonoBehaviour, IPlayerController
     public event Action<bool> ToggledPlayer;
 
     public bool Active { get; private set; } = true;
-    public Vector2 Up { get; private set; }
-    public Vector2 Right { get; private set; }
     public Vector2 Input => _frameInput.Move;
     public Vector2 GroundNormal { get; private set; }
     public Vector2 Velocity { get; private set; }
@@ -42,7 +40,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     public void RepositionImmediately(Vector2 position, bool resetVelocity = false)
     {
-        _rb.position = position;
+        _rigidbody.position = position;
         if (resetVelocity) SetVelocity(Vector2.zero);
         Repositioned?.Invoke(position);
     }
@@ -51,7 +49,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         Active = on;
 
-        _rb.isKinematic = !on;
+        _rigidbody.isKinematic = !on;
         ToggledPlayer?.Invoke(on);
     }
 
@@ -113,14 +111,14 @@ public class PlayerController : MonoBehaviour, IPlayerController
             new Vector3(0, _character.Height / 2),
             new Vector3(_character.StandingColliderSize.x + CharacterSize.COLLIDER_EDGE_RADIUS * 2 + Stats.WallDetectorRange, _character.Height - 0.1f));
 
-        _rb = GetComponent<Rigidbody2D>();
-        _rb.hideFlags = HideFlags.NotEditable;
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody.hideFlags = HideFlags.NotEditable;
 
         // Primary collider
         _collider = GetComponent<BoxCollider2D>();
         _collider.edgeRadius = CharacterSize.COLLIDER_EDGE_RADIUS;
         _collider.hideFlags = HideFlags.NotEditable;
-        _collider.sharedMaterial = _rb.sharedMaterial;
+        _collider.sharedMaterial = _rigidbody.sharedMaterial;
         _collider.enabled = true;
 
         // Airborne collider
@@ -128,7 +126,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         _airborneCollider.hideFlags = HideFlags.NotEditable;
         _airborneCollider.size = new Vector2(_character.Width - SKIN_WIDTH * 2, _character.Height - SKIN_WIDTH * 2);
         _airborneCollider.offset = new Vector2(0, _character.Height / 2);
-        _airborneCollider.sharedMaterial = _rb.sharedMaterial;
+        _airborneCollider.sharedMaterial = _rigidbody.sharedMaterial;
 
         SetColliderMode(ColliderMode.Airborne);
     }
@@ -162,20 +160,17 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void SetFrameData()
     {
-        var rot = _rb.rotation * Mathf.Deg2Rad;
-        Up = new Vector2(-Mathf.Sin(rot), Mathf.Cos(rot));
-        Right = new Vector2(Up.y, -Up.x);
-        _framePosition = _rb.position;
+        _framePosition = _rigidbody.position;
 
         _hasInputThisFrame = _frameInput.Move.x != 0;
 
-        Velocity = _rb.velocity;
+        Velocity = _rigidbody.velocity;
         _trimmedFrameVelocity = new Vector2(Velocity.x, 0);
     }
 
     private void RemoveTransientVelocity()
     {
-        var currentVelocity = _rb.velocity;
+        var currentVelocity = _rigidbody.velocity;
         var velocityBeforeReduction = currentVelocity;
 
         currentVelocity -= _totalTransientVelocityAppliedLastFrame;
@@ -184,8 +179,6 @@ public class PlayerController : MonoBehaviour, IPlayerController
         _frameTransientVelocity = Vector2.zero;
         _totalTransientVelocityAppliedLastFrame = Vector2.zero;
 
-        // If flung into a wall, dissolve the decay
-        // Replace this entire section with Boubourriquet's solution
         var decay = Stats.Friction * Stats.AirFrictionMultiplier;
         if ((velocityBeforeReduction.x < 0 && _decayingTransientVelocity.x < velocityBeforeReduction.x) ||
             (velocityBeforeReduction.x > 0 && _decayingTransientVelocity.x > velocityBeforeReduction.x) ||
@@ -215,7 +208,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private float _currentStepDownLength;
     private float GrounderLength => _character.StepHeight + SKIN_WIDTH;
 
-    private Vector2 RayPoint => _framePosition + Up * (_character.StepHeight + SKIN_WIDTH);
+    private Vector2 RayPoint => _framePosition + Vector2.up * (_character.StepHeight + SKIN_WIDTH);
 
     private void CalculateCollisions()
     {
@@ -229,7 +222,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         {
             foreach (var offset in GenerateRayOffsets())
             {
-                isGroundedThisFrame = PerformRay(RayPoint + Right * offset) || PerformRay(RayPoint - Right * offset);
+                isGroundedThisFrame = PerformRay(RayPoint + Vector2.right * offset) || PerformRay(RayPoint - Vector2.right * offset);
                 if (isGroundedThisFrame) break;
             }
         }
@@ -241,10 +234,10 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
         bool PerformRay(Vector2 point)
         {
-            _groundHit = Physics2D.Raycast(point, -Up, GrounderLength + _currentStepDownLength, Stats.CollisionLayers);
+            _groundHit = Physics2D.Raycast(point, -Vector2.up, GrounderLength + _currentStepDownLength, Stats.CollisionLayers);
             if (!_groundHit) return false;
 
-            if (Vector2.Angle(_groundHit.normal, Up) > Stats.MaxWalkableSlope)
+            if (Vector2.Angle(_groundHit.normal, Vector2.up) > Stats.MaxWalkableSlope)
             {
                 return false;
             }
@@ -269,7 +262,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         if (grounded)
         {
             GroundedChanged?.Invoke(true, _lastFrameY);
-            _rb.gravityScale = 0;
+            _rigidbody.gravityScale = 0;
             SetVelocity(_trimmedFrameVelocity);
             _constantForce.force = Vector2.zero;
             _currentStepDownLength = _character.StepHeight;
@@ -282,7 +275,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         {
             GroundedChanged?.Invoke(false, 0);
             _timeLeftGrounded = Time.time;
-            _rb.gravityScale = GRAVITY_SCALE;
+            _rigidbody.gravityScale = GRAVITY_SCALE;
             SetColliderMode(ColliderMode.Airborne);
         }
     }
@@ -321,7 +314,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         if (_grounded)
         {
             GroundNormal = _groundHit.normal;
-            var angle = Vector2.Angle(GroundNormal, Up);
+            var angle = Vector2.Angle(GroundNormal, Vector2.up);
             if (angle < Stats.MaxWalkableSlope) _frameDirection.y = _frameDirection.x * -GroundNormal.x / GroundNormal.y;
         }
 
@@ -393,7 +386,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         {
             _timeLeftWall = Time.time;
             _canGrabWallAfter = Time.time + WALL_REATTACH_COOLDOWN;
-            _rb.gravityScale = GRAVITY_SCALE;
+            _rigidbody.gravityScale = GRAVITY_SCALE;
             WallDirection = 0;
             if (Velocity.y > 0)
             {
@@ -495,8 +488,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         if (_forceToApplyThisFrame != Vector2.zero)
         {
-            _rb.velocity += AdditionalFrameVelocities();
-            _rb.AddForce(_forceToApplyThisFrame * _rb.mass, ForceMode2D.Impulse);
+            _rigidbody.velocity += AdditionalFrameVelocities();
+            _rigidbody.AddForce(_forceToApplyThisFrame * _rigidbody.mass, ForceMode2D.Impulse);
 
             // Returning provides the crispest & most accurate jump experience
             // Required for reliable slope jumps
@@ -511,12 +504,12 @@ public class PlayerController : MonoBehaviour, IPlayerController
             if (_frameInput.Move.y < 0) wallVelocity = _frameInput.Move.y * Stats.WallClimbSpeed;
             else wallVelocity = Mathf.MoveTowards(Mathf.Min(Velocity.y, 0), -Stats.WallClimbSpeed, Stats.WallFallAcceleration * Time.fixedDeltaTime);
 
-            SetVelocity(new Vector2(_rb.velocity.x, wallVelocity));
+            SetVelocity(new Vector2(_rigidbody.velocity.x, wallVelocity));
             return;
         }
 
         var extraForce = new Vector2(0, _grounded ? 0 : -Stats.ExtraConstantGravity * (_endedJumpEarly && Velocity.y > 0 ? Stats.EndJumpEarlyExtraForceMultiplier : 1));
-        _constantForce.force = extraForce * _rb.mass;
+        _constantForce.force = extraForce * _rigidbody.mass;
 
         var targetSpeed = _hasInputThisFrame ? Stats.BaseSpeed : 0;
 
@@ -552,7 +545,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
             step *= Stats.AirFrictionMultiplier;
 
             var targetX = Mathf.MoveTowards(_trimmedFrameVelocity.x, xDir.x * targetSpeed, step);
-            newVelocity = new Vector2(targetX, _rb.velocity.y);
+            newVelocity = new Vector2(targetX, _rigidbody.velocity.y);
         }
 
         SetVelocity((newVelocity + AdditionalFrameVelocities()) * _currentFrameSpeedModifier);
@@ -561,7 +554,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         {
             if (_immediateMove.sqrMagnitude > SKIN_WIDTH)
             {
-                _rb.MovePosition(_framePosition + _immediateMove);
+                _rigidbody.MovePosition(_framePosition + _immediateMove);
             }
 
             _totalTransientVelocityAppliedLastFrame = _frameTransientVelocity + _decayingTransientVelocity;
@@ -571,7 +564,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void SetVelocity(Vector2 newVel)
     {
-        _rb.velocity = newVel;
+        _rigidbody.velocity = newVel;
         Velocity = newVel;
     }
 
@@ -627,9 +620,7 @@ public interface IPlayerController
     public event Action<bool> ToggledPlayer;
 
     public bool Active { get; }
-    public Vector2 Up { get; }
     public Vector2 Input { get; }
-    public Vector2 GroundNormal { get; }
     public Vector2 Velocity { get; }
     public int WallDirection { get; }
 
@@ -637,11 +628,4 @@ public interface IPlayerController
 
     public void RepositionImmediately(Vector2 position, bool resetVelocity = false);
     public void TogglePlayer(bool on);
-}
-
-public interface ISpeedModifier
-{
-    public bool InAir { get; }
-    public bool OnGround { get; }
-    public Vector2 Modifier { get; }
 }
