@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f27d624e177a1f45930a29f9a788916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &6916703390337596008
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,5 +310,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4321a51857a8c4aa886eb5d241f06f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Stats>k__BackingField: {fileID: 11400000, guid: a246e9c5badb70a4a9ff2bc83a474c91, type: 2}
   _drawGizmos: 1
+  <Stats>k__BackingField: {fileID: 11400000, guid: a246e9c5badb70a4a9ff2bc83a474c91, type: 2}

@@ -11,8 +11,6 @@ public class WindyPlace : MonoBehaviour
     {
         if (collision.TryGetComponent(out Rigidbody2D rigidbody))
         {
-            Debug.Log(Time.time);
-
             rigidbody.AddForce(windDirection * windForce);
         }
     }

@@ -4,9 +4,11 @@ using TarodevController;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(CapsuleCollider2D))]
-public class PlayerController : MonoBehaviour, IPlayerController
+public class PlayerController : MonoBehaviour
 {
     #region References
+
+    [SerializeField] private bool _drawGizmos = true;
 
     private BoxCollider2D _collider;
     private CapsuleCollider2D _airborneCollider;
@@ -21,14 +23,17 @@ public class PlayerController : MonoBehaviour, IPlayerController
     [field: SerializeField] public PlayerStats Stats { get; private set; }
 
     public event Action<JumpType> Jumped;
+    public event Action Landed;
+    public event Action GlidingBegun;
+    public event Action GlidingEnded;
     public event Action<bool, float> GroundedChanged;
     public event Action<bool> WallGrabChanged;
     public event Action<Vector2> Repositioned;
     public event Action<bool> ToggledPlayer;
 
     public bool Active { get; private set; } = true;
-    public Vector2 Input => _frameInput.Move;
     public Vector2 GroundNormal { get; private set; }
+    public bool IsGrounded { get; private set; }
     public Vector2 Velocity { get; private set; }
     public int WallDirection { get; private set; }
 
@@ -54,8 +59,6 @@ public class PlayerController : MonoBehaviour, IPlayerController
     }
 
     #endregion
-
-    [SerializeField] private bool _drawGizmos = true;
 
     #region Loop
 
@@ -148,14 +151,21 @@ public class PlayerController : MonoBehaviour, IPlayerController
             _timeJumpWasPressed = Time.time;
         }
 
-        if (_frameInput.JumpDown && !_isGrounded)
+        bool lastGlidingState = _isGliding;
+        if (_frameInput.JumpDown && !IsGrounded)
         {
             _isGliding = true;
         }
-        if (_frameInput.JumpReleased || _isGrounded)
+        if (_frameInput.JumpReleased || IsGrounded)
         {
             _isGliding = false;
         }
+
+        if (lastGlidingState != _isGliding)
+        {
+            if (_isGliding) GlidingBegun?.Invoke();
+            else GlidingEnded?.Invoke();
+        } 
     }
 
     #endregion
@@ -213,8 +223,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private const float SKIN_WIDTH = 0.02f;
     private const int RAY_SIDE_COUNT = 5;
     private RaycastHit2D _groundHit;
-    private bool _isGrounded;
     private float _currentStepDownLength;
+
     private float GrounderLength => _character.StepHeight + SKIN_WIDTH;
 
     private Vector2 RayPoint => _framePosition + Vector2.up * (_character.StepHeight + SKIN_WIDTH);
@@ -236,8 +246,12 @@ public class PlayerController : MonoBehaviour, IPlayerController
             }
         }
 
-        if (isGroundedThisFrame && !_isGrounded) ToggleGrounded(true);
-        else if (!isGroundedThisFrame && _isGrounded) ToggleGrounded(false);
+        if (isGroundedThisFrame && !IsGrounded)
+        {
+            ToggleGrounded(true);
+            Landed?.Invoke();
+        }
+        else if (!isGroundedThisFrame && IsGrounded) ToggleGrounded(false);
 
         Physics2D.queriesStartInColliders = _cachedQueryMode;
 
@@ -267,7 +281,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void ToggleGrounded(bool grounded)
     {
-        _isGrounded = grounded;
+        IsGrounded = grounded;
         if (grounded)
         {
             GroundedChanged?.Invoke(true, _lastFrameY);
@@ -320,7 +334,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         _frameDirection = new Vector2(_frameInput.Move.x, 0);
 
-        if (_isGrounded)
+        if (IsGrounded)
         {
             GroundNormal = _groundHit.normal;
             var angle = Vector2.Angle(GroundNormal, Vector2.up);
@@ -364,7 +378,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
         bool ShouldStickToWall()
         {
-            if (_wallDirThisFrame == 0 || _isGrounded) return false;
+            if (_wallDirThisFrame == 0 || IsGrounded) return false;
 
             if (HorizontalInputPressed && !IsPushingAgainstWall) return false; // If pushing away
             return !Stats.RequireInputPush || (IsPushingAgainstWall);
@@ -420,19 +434,19 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private float _timeLeftGrounded;
 
     private bool HasBufferedJump => _bufferedJumpUsable && Time.time < _timeJumpWasPressed + Stats.BufferedJumpTime && !IsWithinJumpClearance;
-    private bool CanUseCoyote => _coyoteUsable && !_isGrounded && Time.time < _timeLeftGrounded + Stats.CoyoteTime;
-    private bool CanAirJump => !_isGrounded && _airJumpsRemaining > 0;
+    private bool CanUseCoyote => _coyoteUsable && !IsGrounded && Time.time < _timeLeftGrounded + Stats.CoyoteTime;
+    private bool CanAirJump => !IsGrounded && _airJumpsRemaining > 0;
 
     private void CalculateJump()
     {
         if ((_jumpToConsume || HasBufferedJump))
         {
-            if (_isGrounded) ExecuteJump(JumpType.Jump);
+            if (IsGrounded) ExecuteJump(JumpType.Jump);
             else if (CanUseCoyote) ExecuteJump(JumpType.Coyote);
             else if (CanAirJump) ExecuteJump(JumpType.AirJump);
         }
 
-        if ((!_endedJumpEarly && !_isGrounded && !_frameInput.JumpHeld && Velocity.y > 0) || Velocity.y < 0) _endedJumpEarly = true; // Early end detection
+        if ((!_endedJumpEarly && !IsGrounded && !_frameInput.JumpHeld && Velocity.y > 0) || Velocity.y < 0) _endedJumpEarly = true; // Early end detection
     }
 
     private void ExecuteJump(JumpType jumpType)
@@ -473,7 +487,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void TraceGround()
     {
-        if (_isGrounded && !IsWithinJumpClearance)
+        if (IsGrounded && !IsWithinJumpClearance)
         {
             // Use transient velocity to keep grounded. Move position is not interpolated
             var distanceFromGround = _character.StepHeight - _groundHit.distance;
@@ -512,7 +526,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
             return;
         }
 
-        var extraForce = new Vector2(0, _isGrounded && !_isGliding ? 0 : -Stats.ExtraConstantGravity * (_endedJumpEarly && Velocity.y > 0 ? Stats.EndJumpEarlyExtraForceMultiplier : 1));
+        var extraForce = new Vector2(0, IsGrounded && !_isGliding ? 0 : -Stats.ExtraConstantGravity * (_endedJumpEarly && Velocity.y > 0 ? Stats.EndJumpEarlyExtraForceMultiplier : 1));
         _constantForce.force = extraForce * _rigidbody.mass;
 
         var targetSpeed = _hasInputThisFrame ? Stats.BaseSpeed : 0;
@@ -526,7 +540,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
         Vector2 newVelocity;
         step *= Time.fixedDeltaTime;
-        if (_isGrounded)
+        if (IsGrounded)
         {
             var speed = Mathf.MoveTowards(Velocity.magnitude, targetSpeed, step);
 
@@ -632,25 +646,4 @@ public enum JumpType
     Jump,
     Coyote,
     AirJump,
-}
-
-public interface IPlayerController
-{
-    public PlayerStats Stats { get; }
-
-    public event Action<JumpType> Jumped;
-    public event Action<bool, float> GroundedChanged;
-    public event Action<bool> WallGrabChanged;
-    public event Action<Vector2> Repositioned;
-    public event Action<bool> ToggledPlayer;
-
-    public bool Active { get; }
-    public Vector2 Input { get; }
-    public Vector2 Velocity { get; }
-    public int WallDirection { get; }
-
-    public void AddFrameForce(Vector2 force, bool resetVelocity = false);
-
-    public void RepositionImmediately(Vector2 position, bool resetVelocity = false);
-    public void TogglePlayer(bool on); 
 }
