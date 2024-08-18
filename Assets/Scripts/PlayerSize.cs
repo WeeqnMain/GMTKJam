@@ -15,20 +15,25 @@ public class PlayerSize : MonoBehaviour
   
   private Vector3 baseScale;
   private int seedsEaten;
-
+  private float cooldown;
   private Rigidbody2D rigidbody;
+
   private void Awake()
   {
       rigidbody = GetComponent<Rigidbody2D>();
       baseScale = gameObject.transform.localScale;
       seedsEaten = 0;
       stats.BaseSpeed = initialSpeed;
+
+      if(cooldown > 0) cooldown -= Time.deltaTime;
   }
   
   void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.gameObject.CompareTag("Food")) 
+    if (other.gameObject.CompareTag("Food") && cooldown <= 0) 
     {
+      cooldown = 0.5f;
+
       ++seedsEaten;
       gameObject.transform.localScale += Vector3.one * scaleIncrease;
       rigidbody.mass += massIncrease;
