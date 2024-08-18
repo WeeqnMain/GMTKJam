@@ -10,6 +10,9 @@ public class PlayerVisuals : MonoBehaviour
 
     [SerializeField] private PlayerController player;
 
+    [Header("ParticleEffects")]
+    [SerializeField] private ParticleSystem footStepParticleEffect;
+
     private Animator _animator;
 
     private void Awake()
@@ -65,5 +68,13 @@ public class PlayerVisuals : MonoBehaviour
     private void OnLand()
     {
         _animator.SetBool(IsFalling, false);
+    }
+
+    public void AnimationEvent_FootstepParticleEmmit()
+    {
+        if (footStepParticleEffect.isPlaying == false)
+        {
+            footStepParticleEffect.Play();
+        }
     }
 }

@@ -1377,6 +1377,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
+--- !u!4 &1960815481 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8389601971318423827, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
+  m_PrefabInstance: {fileID: 1960815480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2039913822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,13 +1586,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 4675785669358369389, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 1960815481}
+    - target: {fileID: 4675785669358369389, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 1960815481}
+    - target: {fileID: 4675785669358369389, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 9.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027956762813454004, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 6.49
+      objectReference: {fileID: 0}
     - target: {fileID: 5658041335341484846, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.23
       objectReference: {fileID: 0}
     - target: {fileID: 5658041335341484846, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.66
+      value: 9.15
       objectReference: {fileID: 0}
     - target: {fileID: 5658041335341484846, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1620,6 +1641,14 @@ PrefabInstance:
     - target: {fileID: 5658041335341484846, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092027058726493481, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253643889642315766, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+      propertyPath: orthographic size
+      value: 9.26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
