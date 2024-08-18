@@ -32,6 +32,7 @@ MonoBehaviour:
   AirFrictionMultiplier: 0.5
   DirectionCorrectionMultiplier: 3
   MaxWalkableSlope: 50
+  RigidbodyMass: 0.5
   ExtraConstantGravity: 40
   BufferedJumpTime: 0.15
   CoyoteTime: 0.15

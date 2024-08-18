@@ -161,7 +161,7 @@ Transform:
 --- !u!50 &5483355540592424350
 Rigidbody2D:
   serializedVersion: 4
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -170,7 +170,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -187,7 +187,7 @@ Rigidbody2D:
   m_Constraints: 4
 --- !u!61 &8974928982930918976
 BoxCollider2D:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -232,7 +232,7 @@ BoxCollider2D:
   m_EdgeRadius: 0.05
 --- !u!70 &6751011029375218798
 CapsuleCollider2D:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -267,7 +267,7 @@ CapsuleCollider2D:
   m_Direction: 0
 --- !u!247 &6804552711856173984
 ConstantForce2D:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -278,7 +278,7 @@ ConstantForce2D:
   m_Torque: 0
 --- !u!114 &8301014411892768428
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

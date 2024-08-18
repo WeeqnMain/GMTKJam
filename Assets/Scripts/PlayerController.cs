@@ -65,9 +65,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _playerInput = GetComponent<PlayerInput>();
-        _constantForce = GetComponent<ConstantForce2D>();
-
         SetupCharacter();
     }
 
@@ -109,6 +106,9 @@ public class PlayerController : MonoBehaviour
 
     private void SetupCharacter()
     {
+        _playerInput = GetComponent<PlayerInput>();
+        _constantForce = GetComponent<ConstantForce2D>();
+
         _character = Stats.CharacterSize.GenerateCharacterSize();
         _cachedQueryMode = Physics2D.queriesStartInColliders;
 
@@ -117,6 +117,7 @@ public class PlayerController : MonoBehaviour
             new Vector3(_character.StandingColliderSize.x + CharacterSize.COLLIDER_EDGE_RADIUS * 2 + Stats.WallDetectorRange, _character.Height - 0.1f));
 
         _rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody.mass = Stats.RigidbodyMass;
 
         // Primary collider
         _collider = GetComponent<BoxCollider2D>();
@@ -129,6 +130,12 @@ public class PlayerController : MonoBehaviour
         _airborneCollider.size = new Vector2(_character.Width - SKIN_WIDTH * 2, _character.Height - SKIN_WIDTH * 2);
         _airborneCollider.offset = new Vector2(0, _character.Height / 2);
         _airborneCollider.sharedMaterial = _rigidbody.sharedMaterial;
+
+        _playerInput.hideFlags = HideFlags.NotEditable;
+        _constantForce.hideFlags = HideFlags.NotEditable;
+        _collider.hideFlags = HideFlags.NotEditable;
+        _airborneCollider.hideFlags = HideFlags.NotEditable;
+        _rigidbody.hideFlags = HideFlags.NotEditable;
 
         SetColliderMode(ColliderMode.Airborne);
     }
