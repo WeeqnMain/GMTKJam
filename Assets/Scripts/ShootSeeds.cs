@@ -15,7 +15,7 @@ public class ShootSeeds : MonoBehaviour
     {
         if(Random.Range(0f, 1f) < frequency * Time.deltaTime)
         {
-            Vector3 pos = new Vector3(Random.Range(minPos.x, maxPos.x), Random.Range(minPos.y, maxPos.y), 0);
+            Vector3 pos = new Vector3(Random.Range(minPos.x, maxPos.x), Random.Range(minPos.y, maxPos.y), -1f);
 
             GameObject seed = Instantiate(seedPrefab, 
                 gameObject.transform.position + pos, 
