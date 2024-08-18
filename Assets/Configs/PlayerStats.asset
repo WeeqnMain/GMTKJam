@@ -17,7 +17,7 @@ MonoBehaviour:
     m_Bits: 8
   CollisionLayers:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 193
   CharacterSize:
     Height: 0.95
     Width: 0.6
@@ -32,6 +32,7 @@ MonoBehaviour:
   AirFrictionMultiplier: 0.5
   DirectionCorrectionMultiplier: 3
   MaxWalkableSlope: 50
+  RigidbodyMass: 0.5
   ExtraConstantGravity: 40
   BufferedJumpTime: 0.15
   CoyoteTime: 0.15
