@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 6804552711856173984}
   - component: {fileID: 8301014411892768428}
   - component: {fileID: 3135910238879895004}
-  - component: {fileID: 5205508997383542181}
+  - component: {fileID: 5462015445158050409}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _drawGizmos: 1
   <Stats>k__BackingField: {fileID: 11400000, guid: a246e9c5badb70a4a9ff2bc83a474c91, type: 2}
---- !u!114 &5205508997383542181
+--- !u!114 &5462015445158050409
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -312,7 +312,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6916703390337596008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b457010d2f1da641b93d77ef7859ac6, type: 3}
+  m_Script: {fileID: 11500000, guid: 12b0fe7f79a38fe45b52fb6a5801a3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleFactor: 1.2
+  stats: {fileID: 0}
+  scaleIncrease: 0.5
+  massIncrease: 0.1
+  speedDecrease: 0.5
