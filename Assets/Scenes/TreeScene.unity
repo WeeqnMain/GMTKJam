@@ -1265,8 +1265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0235f2dd69b11394b8b2efff7163ec1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windForce: 40
-  windAngle: 328
+  windForce: 35
+  windAngle: 359
 --- !u!61 &2700970893512202461
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1338,6 +1338,10 @@ PrefabInstance:
     - target: {fileID: 5205508997383542181, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
       propertyPath: scaleFactor
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483355540592424350, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
+      propertyPath: m_Mass
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6916703390337596008, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
       propertyPath: m_Name
