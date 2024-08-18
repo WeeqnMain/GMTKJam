@@ -26,7 +26,7 @@ MonoBehaviour:
   VerticalDeadZoneThreshold: 0.3
   HorizontalDeadZoneThreshold: 0.10000000149011612
   PositionCorrectionMode: 0
-  BaseSpeed: 9
+  BaseSpeed: 5.5
   Acceleration: 50
   Friction: 30
   AirFrictionMultiplier: 0.5
