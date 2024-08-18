@@ -5214,7 +5214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b0fe7f79a38fe45b52fb6a5801a3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
+  stats: {fileID: 11400000, guid: a246e9c5badb70a4a9ff2bc83a474c91, type: 2}
   scaleIncrease: 0.5
   massIncrease: 0.1
   speedDecrease: 0.5
