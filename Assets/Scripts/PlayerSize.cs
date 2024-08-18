@@ -11,7 +11,6 @@ public class PlayerSize : MonoBehaviour
     [SerializeField] private float massIncrease;
     [SerializeField] private float speedDecrease;
     
-    private float seedsEaten;
     private Vector3 baseScale;
 
     private Rigidbody2D rigidbody;
