@@ -432,22 +432,6 @@ PrefabInstance:
       propertyPath: minPos.y
       value: -3
       objectReference: {fileID: 0}
-    - target: {fileID: 3653653604879043921, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
-      propertyPath: maxVerticalVelocity
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653653604879043921, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
-      propertyPath: minVerticalVelocity
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653653604879043921, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
-      propertyPath: maxHorizontalVelocity
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653653604879043921, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
-      propertyPath: minHorizontalVelocity
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8866680953426865264, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
       propertyPath: m_Name
       value: Tree
