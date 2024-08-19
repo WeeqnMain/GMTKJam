@@ -1667,7 +1667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0235f2dd69b11394b8b2efff7163ec1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windForce: 60
+  windForce: 80
   windAngle: 359
   HorizontalForceMultiplier: 1
   VerticalForceMultiplier: 1
@@ -4067,7 +4067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0235f2dd69b11394b8b2efff7163ec1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windForce: 60
+  windForce: 70
   windAngle: 359
   HorizontalForceMultiplier: 1
   VerticalForceMultiplier: 1
