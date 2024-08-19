@@ -20,6 +20,12 @@ public class SeedCreator : MonoBehaviour
     private void Awake()
     {
         _timeToSpawn = _spawnFrequency;
+
+        Seed[] seedsInScene = FindObjectsByType<Seed>(FindObjectsSortMode.None);
+        foreach (var seed in seedsInScene)
+        {
+            seed.Eaten += OnSeedEaten;
+        }
     }
 
     private void Update()
