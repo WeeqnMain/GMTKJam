@@ -8,6 +8,7 @@ public class Seed : MonoBehaviour
     [SerializeField] private float maxLifeTime;
 
     private Rigidbody2D rb;
+    private SeedsCounter seedsCounter;
 
     public event Action<bool> Eaten;
 
@@ -15,6 +16,8 @@ public class Seed : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         StartCoroutine(LifeTimeRoutine());
+
+        seedsCounter = FindObjectOfType<SeedsCounter>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,6 +26,8 @@ public class Seed : MonoBehaviour
         {
             playerSize.IncreaseSize();
             RemoveSelf(true);
+
+            ++seedsCounter.counter;
         }
     }
 
