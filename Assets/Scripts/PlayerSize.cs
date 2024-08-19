@@ -6,7 +6,6 @@ public class PlayerSize : MonoBehaviour
     [SerializeField] private PlayerStats stats;
     [SerializeField] private float initialSpeed;
     [SerializeField] private float scaleIncrease;
-    [SerializeField] private float massIncrease;
     [SerializeField] private float speedDecrease;
   
     private float cooldown;
@@ -27,7 +26,6 @@ public class PlayerSize : MonoBehaviour
     {
         cooldown = 0.5f;
         gameObject.transform.localScale += Vector3.one * scaleIncrease;
-        rigidbody.mass += massIncrease;
         stats.BaseSpeed -= speedDecrease;
     }
 }
