@@ -7,11 +7,14 @@ public class SeedCreator : MonoBehaviour
 
     [SerializeField, Range(0, 1)] private float _spawnProbability;
     [SerializeField] private float _spawnFrequency;
+    [SerializeField] private float spawnUnderCollected;
     private float _timeToSpawn;
 
     [SerializeField] private float _throwForce;
     [SerializeField] private float _minAngle;
     [SerializeField] private float _maxAngle;
+
+    private SeedsCounter seedsCounter;
 
     public int SeedsEaten { get; private set; }
 
@@ -20,6 +23,7 @@ public class SeedCreator : MonoBehaviour
     private void Awake()
     {
         _timeToSpawn = _spawnFrequency;
+        seedsCounter = FindObjectOfType<SeedsCounter>();
 
         Seed[] seedsInScene = FindObjectsByType<Seed>(FindObjectsSortMode.None);
         foreach (var seed in seedsInScene)
@@ -35,7 +39,7 @@ public class SeedCreator : MonoBehaviour
         else
         {
             _timeToSpawn = _spawnFrequency;
-            if (_spawnProbability > UnityEngine.Random.Range(0f, 1f))
+            if (_spawnProbability > UnityEngine.Random.Range(0f, 1f) && seedsCounter.counter < spawnUnderCollected)
             {
                 SpawnSeed();
             }
