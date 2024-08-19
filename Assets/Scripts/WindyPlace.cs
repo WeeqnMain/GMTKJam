@@ -1,4 +1,4 @@
-using UnityEditor;
+using System.Collections;
 using UnityEngine;
 
 public class WindyPlace : MonoBehaviour
@@ -9,7 +9,6 @@ public class WindyPlace : MonoBehaviour
     [SerializeField, Range(0, 1)] private float HorizontalForceMultiplier = 1f;
     [SerializeField, Range(0, 1)] private float VerticalForceMultiplier = 1f;
 
-    [SerializeField] private AudioClip windSound;
     private AudioSource audioSource;
 
     private float appliedForce;
@@ -17,6 +16,7 @@ public class WindyPlace : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+
         //magically change the force to get more accuracy
         appliedForce = windForce / 100f; 
     }
@@ -60,17 +60,19 @@ public class WindyPlace : MonoBehaviour
     {
         if (audioSource.isPlaying == false)
         {
-            //StartCoroutine(PlaySoundRoutine());
+            StartCoroutine(PlaySoundRoutine());
         }
     }
 
-    private void PlaySoundRoutine()
+    private IEnumerator PlaySoundRoutine()
     {
         audioSource.volume = 0;
         while (audioSource.volume < 1f)
         {
             audioSource.volume = Mathf.MoveTowards(audioSource.volume, 1, Time.deltaTime);
+            yield return new WaitForEndOfFrame();
         }
+        audioSource.Play();
     }
 
     private void OnDrawGizmosSelected()
