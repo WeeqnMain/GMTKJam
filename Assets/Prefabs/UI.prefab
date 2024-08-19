@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1029762321725329747}
   - component: {fileID: 8494586715015573220}
   - component: {fileID: 3696823348526272908}
+  - component: {fileID: 865978603066342499}
   m_Layer: 5
-  m_Name: Count
+  m_Name: Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,12 +129,25 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0.8141022, y: 0, z: 0, w: 28.495268}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &865978603066342499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543799216784688585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 020097f7995625e40bfe6216de80cd67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counter: 0
 --- !u!1 &6627725757632800928
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,8 +182,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -203.26447, y: 11.1752}
-  m_SizeDelta: {x: 197.5376, y: 37.4352}
+  m_AnchoredPosition: {x: -181.00069, y: 11.1752}
+  m_SizeDelta: {x: 232.912, y: 37.4352}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7668202703790286270
 CanvasRenderer:
@@ -243,8 +257,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -219.01, y: -7.3}
-  m_SizeDelta: {x: 158.2035, y: 50}
+  m_AnchoredPosition: {x: -219.01, y: 13.323291}
+  m_SizeDelta: {x: 166.2, y: 17.2321}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8590980902286706873
 CanvasRenderer:
@@ -274,7 +288,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Seeds collected:'
+  m_text: 'Berries collected:    / 10'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -337,7 +351,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 1.6325684, w: 0}
+  m_margin: {x: 0, y: 0, z: -56.289368, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

@@ -97,8 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077c45e7fa227844986fbab4d311b834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seedPrefab: {fileID: 2939521115887754315, guid: c827319761b88784684f75c48a3225d0, type: 3}
-  frequency: 0.1
-  velocity: 5
-  minAngle: 45
-  maxAngle: 225
+  _seedPrefab: {fileID: -6067538863836392227, guid: c827319761b88784684f75c48a3225d0, type: 3}
+  _spawnProbability: 0
+  _spawnFrequency: 0
+  _throwForce: 0
+  _minAngle: 0
+  _maxAngle: 0
