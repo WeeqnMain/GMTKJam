@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seedPrefab: {fileID: 2939521115887754315, guid: c827319761b88784684f75c48a3225d0, type: 3}
-  frequency: 1
+  frequency: 0.1
   velocity: 5
   minAngle: 45
   maxAngle: 225
