@@ -4758,10 +4758,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 865978603066342499, guid: 17b8264654672e844908e5d35fc4570a, type: 3}
-      propertyPath: TMP
-      value: 
-      objectReference: {fileID: 1152143135}
-    - target: {fileID: 865978603066342499, guid: 17b8264654672e844908e5d35fc4570a, type: 3}
       propertyPath: seedCreator
       value: 
       objectReference: {fileID: 2099516173}
@@ -4795,18 +4791,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 948398841338633678, guid: 17b8264654672e844908e5d35fc4570a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 948398841338633678, guid: 17b8264654672e844908e5d35fc4570a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 948398841338633678, guid: 17b8264654672e844908e5d35fc4570a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 948398841338633678, guid: 17b8264654672e844908e5d35fc4570a, type: 3}
-      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 948398841338633678, guid: 17b8264654672e844908e5d35fc4570a, type: 3}
