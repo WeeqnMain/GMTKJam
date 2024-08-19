@@ -4,26 +4,30 @@ using UnityEngine;
 
 public class Seed : MonoBehaviour
 {
+    [SerializeField] private bool unlimitedLifeTime;
     [SerializeField] private float minLifeTime;
     [SerializeField] private float maxLifeTime;
 
     private Rigidbody2D rb;
     private SeedsCounter seedsCounter;
+    private bool eaten; // A added it so that the seed can only be eaten once, otherwise the collider could be triggered multiple times before being destroyed
 
     public event Action<bool> Eaten;
 
     private void Awake()
     {
+        eaten = false;
         rb = GetComponent<Rigidbody2D>();
-        StartCoroutine(LifeTimeRoutine());
+        if(!unlimitedLifeTime) StartCoroutine(LifeTimeRoutine());
 
         seedsCounter = FindObjectOfType<SeedsCounter>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PlayerSize playerSize))
+        if (collision.TryGetComponent(out PlayerSize playerSize) && !eaten)
         {
+            eaten = true;
             playerSize.IncreaseSize();
             RemoveSelf(true);
 
