@@ -1418,8 +1418,16 @@ PrefabInstance:
       value: 9.26
       objectReference: {fileID: 0}
     - target: {fileID: 5027956762813454004, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+      propertyPath: m_XDamping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027956762813454004, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+      propertyPath: m_YDamping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027956762813454004, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 6.49
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5658041335341484846, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1427,7 +1435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5658041335341484846, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.4284496
+      value: 3.4384499
       objectReference: {fileID: 0}
     - target: {fileID: 5658041335341484846, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_LocalPosition.z
