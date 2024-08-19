@@ -32,7 +32,7 @@ public class PlayerSize : MonoBehaviour
     if(cooldown > 0) cooldown -= Time.deltaTime;
   }
 
-  void OnTriggerStay2D(Collider2D other)
+  void OnTriggerEnter2D(Collider2D other)
   {
     if (other.gameObject.CompareTag("Food") && cooldown <= 0) 
     {
