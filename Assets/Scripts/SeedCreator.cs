@@ -7,6 +7,7 @@ public class SeedCreator : MonoBehaviour
 
     [SerializeField, Range(0, 1)] private float _spawnProbability;
     [SerializeField] private float _spawnFrequency;
+    [SerializeField] private float spawnUnderCollected;
     private float _timeToSpawn;
 
     [SerializeField] private float _throwForce;
@@ -20,10 +21,7 @@ public class SeedCreator : MonoBehaviour
     private void Awake()
     {
         _timeToSpawn = _spawnFrequency;
-    }
 
-    private void Start()
-    {
         Seed[] seedsInScene = FindObjectsByType<Seed>(FindObjectsSortMode.None);
         foreach (var seed in seedsInScene)
         {
@@ -38,7 +36,7 @@ public class SeedCreator : MonoBehaviour
         else
         {
             _timeToSpawn = _spawnFrequency;
-            if (_spawnProbability > UnityEngine.Random.Range(0f, 1f))
+            if (_spawnProbability > UnityEngine.Random.Range(0f, 1f) && SeedsEaten < spawnUnderCollected)
             {
                 SpawnSeed();
             }
@@ -59,10 +57,8 @@ public class SeedCreator : MonoBehaviour
     private void OnSeedEaten(bool isEaten)
     {
         if (isEaten)
-        {
             SeedsEaten++;
-            SeedsEatenAmountChanged?.Invoke(SeedsEaten);
-        }
+        SeedsEatenAmountChanged.Invoke(SeedsEaten);
     }
 
     private void OnDrawGizmosSelected()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Seed : MonoBehaviour
 {
+    [SerializeField] private bool unlimitedLifeTime;
     [SerializeField] private float minLifeTime;
     [SerializeField] private float maxLifeTime;
 
@@ -18,7 +19,7 @@ public class Seed : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        StartCoroutine(LifeTimeRoutine());
+        if(!unlimitedLifeTime) StartCoroutine(LifeTimeRoutine());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
