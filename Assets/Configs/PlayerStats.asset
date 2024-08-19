@@ -17,7 +17,7 @@ MonoBehaviour:
     m_Bits: 8
   CollisionLayers:
     serializedVersion: 2
-    m_Bits: 193
+    m_Bits: 65
   CharacterSize:
     Height: 0.95
     Width: 0.6
@@ -26,7 +26,7 @@ MonoBehaviour:
   VerticalDeadZoneThreshold: 0.3
   HorizontalDeadZoneThreshold: 0.10000000149011612
   PositionCorrectionMode: 0
-  BaseSpeed: 5.5
+  BaseSpeed: 9
   Acceleration: 50
   Friction: 30
   AirFrictionMultiplier: 0.5
