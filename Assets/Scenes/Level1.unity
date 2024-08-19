@@ -847,6 +847,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6067538863836392227, guid: c827319761b88784684f75c48a3225d0, type: 3}
+      propertyPath: unlimitedLifeTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2939521115887754315, guid: c827319761b88784684f75c48a3225d0, type: 3}
       propertyPath: m_Name
       value: Seed
@@ -5171,6 +5175,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6067538863836392227, guid: c827319761b88784684f75c48a3225d0, type: 3}
+      propertyPath: unlimitedLifeTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2939521115887754315, guid: c827319761b88784684f75c48a3225d0, type: 3}
       propertyPath: m_Name
       value: Seed (1)
