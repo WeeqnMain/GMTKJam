@@ -20,7 +20,10 @@ public class SeedCreator : MonoBehaviour
     private void Awake()
     {
         _timeToSpawn = _spawnFrequency;
+    }
 
+    private void Start()
+    {
         Seed[] seedsInScene = FindObjectsByType<Seed>(FindObjectsSortMode.None);
         foreach (var seed in seedsInScene)
         {
@@ -56,7 +59,10 @@ public class SeedCreator : MonoBehaviour
     private void OnSeedEaten(bool isEaten)
     {
         if (isEaten)
+        {
             SeedsEaten++;
+            SeedsEatenAmountChanged?.Invoke(SeedsEaten);
+        }
     }
 
     private void OnDrawGizmosSelected()

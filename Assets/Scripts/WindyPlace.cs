@@ -60,19 +60,19 @@ public class WindyPlace : MonoBehaviour
     {
         if (audioSource.isPlaying == false)
         {
+            audioSource.Play();
             StartCoroutine(PlaySoundRoutine());
         }
     }
 
     private IEnumerator PlaySoundRoutine()
     {
-        audioSource.volume = 0;
+        audioSource.volume = 0.3f;
         while (audioSource.volume < 1f)
         {
             audioSource.volume = Mathf.MoveTowards(audioSource.volume, 1, Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
-        audioSource.Play();
     }
 
     private void OnDrawGizmosSelected()

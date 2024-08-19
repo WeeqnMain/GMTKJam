@@ -13,6 +13,8 @@ public class Seed : MonoBehaviour
 
     public event Action<bool> Eaten;
 
+    private bool isActive = true;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,7 +23,7 @@ public class Seed : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PlayerSize playerSize))
+        if (collision.TryGetComponent(out PlayerSize playerSize) && isActive)
         {
             playerSize.IncreaseSize();
             RemoveSelf(true);
@@ -30,8 +32,9 @@ public class Seed : MonoBehaviour
 
     private void RemoveSelf(bool isEaten = false)
     {
-        AudioSource.PlayClipAtPoint(collectSounds[UnityEngine.Random.Range(0, collectSounds.Length)], transform.position);
         Eaten?.Invoke(isEaten);
+        isActive = false;
+        AudioSource.PlayClipAtPoint(collectSounds[UnityEngine.Random.Range(0, collectSounds.Length)], transform.position);
         Destroy(gameObject);
     }
 
