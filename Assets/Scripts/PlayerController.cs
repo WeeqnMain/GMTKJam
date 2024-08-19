@@ -159,6 +159,7 @@ public class PlayerController : MonoBehaviour
         if (_frameInput.JumpDown && !IsGrounded)
         {
             IsGliding = true;
+            SetVelocity(new Vector2(_rigidbody.velocity.x, Mathf.Min(_rigidbody.velocity.y, 2f)));
         }
         if (_frameInput.JumpReleased || IsGrounded)
         {

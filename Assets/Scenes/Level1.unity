@@ -547,8 +547,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3653653604879043921, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
+      propertyPath: _maxAngle
+      value: -119.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653653604879043921, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
+      propertyPath: _minAngle
+      value: -240.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653653604879043921, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
       propertyPath: frequency
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653653604879043921, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
+      propertyPath: _seedPrefab
+      value: 
+      objectReference: {fileID: -6067538863836392227, guid: c827319761b88784684f75c48a3225d0, type: 3}
+    - target: {fileID: 3653653604879043921, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
+      propertyPath: _throwForce
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653653604879043921, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
+      propertyPath: _spawnFrequency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653653604879043921, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
+      propertyPath: _spawnProbability
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8866680953426865264, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
       propertyPath: m_Name
