@@ -122,7 +122,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 0.3
 --- !u!58 &2891197999742145171
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 0.5
 --- !u!50 &-3076844360217507780
 Rigidbody2D:
   serializedVersion: 4
@@ -171,9 +171,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.6
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -197,5 +197,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c9de4651205444fa634d30507787ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minLifeTime: 10
-  maxLifeTime: 20
+  minLifeTime: 8
+  maxLifeTime: 12

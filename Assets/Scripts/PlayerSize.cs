@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TarodevController;
 using TMPro;
 using UnityEngine;
@@ -24,10 +25,13 @@ public class PlayerSize : MonoBehaviour
       baseScale = gameObject.transform.localScale;
       seedsEaten = 0;
       stats.BaseSpeed = initialSpeed;
-
-      if(cooldown > 0) cooldown -= Time.deltaTime;
   }
   
+  private void Update()
+  {
+    if(cooldown > 0) cooldown -= Time.deltaTime;
+  }
+
   void OnTriggerEnter2D(Collider2D other)
   {
     if (other.gameObject.CompareTag("Food") && cooldown <= 0) 
