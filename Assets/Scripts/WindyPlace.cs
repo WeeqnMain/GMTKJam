@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class WindyPlace : MonoBehaviour
@@ -8,10 +9,14 @@ public class WindyPlace : MonoBehaviour
     [SerializeField, Range(0, 1)] private float HorizontalForceMultiplier = 1f;
     [SerializeField, Range(0, 1)] private float VerticalForceMultiplier = 1f;
 
+    [SerializeField] private AudioClip windSound;
+    private AudioSource audioSource;
+
     private float appliedForce;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         //magically change the force to get more accuracy
         appliedForce = windForce / 100f; 
     }
@@ -19,6 +24,14 @@ public class WindyPlace : MonoBehaviour
     private void OnValidate()
     {
         appliedForce = windForce / 100f;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out PlayerController player))
+        {
+            PlayWindSound();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -41,6 +54,19 @@ public class WindyPlace : MonoBehaviour
         Vector2 direction = Quaternion.Euler(0, 0, windAngle) * Vector2.up * appliedForce;
         Vector2 force = new(direction.x * HorizontalForceMultiplier, direction.y * VerticalForceMultiplier);
         return force;
+    }
+
+    private void PlayWindSound()
+    {
+        if (audioSource.isPlaying == false)
+        {
+            StartCoroutine(PlaySoundRoutine());
+        }
+    }
+
+    private IEnumerator PlaySoundRoutine()
+    {
+        audioSource
     }
 
     private void OnDrawGizmosSelected()
