@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3527391540802097453}
   - component: {fileID: 2891197999742145171}
   - component: {fileID: -3076844360217507780}
-  - component: {fileID: -8438818115160642209}
+  - component: {fileID: -6067538863836392227}
   m_Layer: 0
   m_Name: Seed
   m_TagString: Food
@@ -185,7 +185,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-8438818115160642209
+--- !u!114 &-6067538863836392227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2939521115887754315}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3c9de4651205444fa634d30507787ff, type: 3}
+  m_Script: {fileID: 11500000, guid: b5639b4bbf7568841990d33ab81d7438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minLifeTime: 8

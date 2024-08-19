@@ -5215,7 +5215,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: a246e9c5badb70a4a9ff2bc83a474c91, type: 2}
-  outputText: {fileID: 0}
   initialSpeed: 9
   scaleIncrease: 0.5
   massIncrease: 0.1
