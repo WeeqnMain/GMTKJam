@@ -1044,7 +1044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8389601971318423827, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.93845
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 8389601971318423827, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1439,7 +1439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5658041335341484846, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.4384499
+      value: 2.93
       objectReference: {fileID: 0}
     - target: {fileID: 5658041335341484846, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1818,6 +1818,14 @@ PrefabInstance:
     - target: {fileID: 4766507419993932753, guid: 444719eb371372a4ab9fddb1289b7f63, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893521814736626936, guid: 444719eb371372a4ab9fddb1289b7f63, type: 3}
+      propertyPath: m_Size.x
+      value: 12.794592
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893521814736626936, guid: 444719eb371372a4ab9fddb1289b7f63, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0000011920929
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -5458,7 +5466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3593135646767197252, guid: c827319761b88784684f75c48a3225d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 3593135646767197252, guid: c827319761b88784684f75c48a3225d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5527,7 +5535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0235f2dd69b11394b8b2efff7163ec1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windForce: 80
+  windForce: 85
   windAngle: 359
 --- !u!61 &1969287164
 BoxCollider2D:
