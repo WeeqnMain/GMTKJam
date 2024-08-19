@@ -34,6 +34,14 @@ public class WindyPlace : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out PlayerController player))
+        {
+            StopWindSound();
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out PlayerController player))
@@ -67,13 +75,31 @@ public class WindyPlace : MonoBehaviour
 
     private IEnumerator PlaySoundRoutine()
     {
-        audioSource.volume = 0.3f;
         while (audioSource.volume < 1f)
         {
-            audioSource.volume = Mathf.MoveTowards(audioSource.volume, 1, Time.deltaTime);
+            audioSource.volume = Mathf.Min(audioSource.volume + Time.deltaTime * 2, 1f);
             yield return new WaitForEndOfFrame();
         }
     }
+
+    private void StopWindSound()
+    {
+        if (audioSource.isPlaying == true)
+        {
+            StartCoroutine(StopSoundRoutine());
+        }
+    }
+
+    private IEnumerator StopSoundRoutine()
+    {
+        while (audioSource.volume > 0f)
+        {
+            audioSource.volume = Mathf.Max(audioSource.volume - Time.deltaTime * 1.5f, 0f);
+            yield return new WaitForEndOfFrame();
+        }
+        audioSource.Stop();
+    }
+
 
     private void OnDrawGizmosSelected()
     {

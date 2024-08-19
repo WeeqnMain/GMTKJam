@@ -739,6 +739,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &693105534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5091873165059250883, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+  m_PrefabInstance: {fileID: 4852794972400407472}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &693105539
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693105534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c41ac9245b87c4192012080077d830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Damping: 0
 --- !u!1001 &706954908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2178,6 +2196,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 115070179427837501, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6916703390337596008, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2518,6 +2540,10 @@ PrefabInstance:
       propertyPath: m_FollowOffset.y
       value: 12.72
       objectReference: {fileID: 0}
+    - target: {fileID: 5477562212870332314, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5658041335341484846, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.23
@@ -2536,15 +2562,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5658041335341484846, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5658041335341484846, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5658041335341484846, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5658041335341484846, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2566,14 +2592,34 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7092027058726493481, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092027058726493481, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092027058726493481, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092027058726493481, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7253643889642315766, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
       propertyPath: orthographic size
       value: 18.02
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2400533595761051899, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5091873165059250883, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 693105539}
   m_SourcePrefab: {fileID: 100100000, guid: 961bf6a5d2c1cb3428f9e620badff329, type: 3}
 --- !u!4 &5937800279278751071
 Transform:
