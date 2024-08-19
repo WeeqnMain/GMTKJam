@@ -15,6 +15,8 @@ public class PlayerVisuals : MonoBehaviour
 
     private Animator _animator;
 
+    public event Action WingFlapped;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -76,5 +78,10 @@ public class PlayerVisuals : MonoBehaviour
         {
             footStepParticleEffect.Play();
         }
+    }
+
+    public void AnimationEvent_WingFlapped()
+    {
+        WingFlapped?.Invoke();
     }
 }

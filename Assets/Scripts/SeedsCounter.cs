@@ -1,23 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SeedsCounter : MonoBehaviour
 {   
-    private TextMeshProUGUI TMP;
-    [DoNotSerialize]public int counter;
+    [SerializeField] private TextMeshProUGUI TMP;
+
+    [SerializeField] private SeedCreator seedCreator;
 
     private void Awake()
     {
         TMP = GetComponent<TextMeshProUGUI>();
-        counter = 0;
+        seedCreator.SeedsEatenAmountChanged += UpdateValue;
     }
 
-    private void Update()
+    private void UpdateValue(int value)
     {
-        TMP.text = counter.ToString();
+        TMP.text = value.ToString();
     }
 }

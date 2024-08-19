@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SeedCreator : MonoBehaviour
@@ -14,6 +15,8 @@ public class SeedCreator : MonoBehaviour
 
     public int SeedsEaten { get; private set; }
 
+    public event Action<int> SeedsEatenAmountChanged;
+
     private void Awake()
     {
         _timeToSpawn = _spawnFrequency;
@@ -26,7 +29,7 @@ public class SeedCreator : MonoBehaviour
         else
         {
             _timeToSpawn = _spawnFrequency;
-            if (_spawnProbability > Random.Range(0f, 1f))
+            if (_spawnProbability > UnityEngine.Random.Range(0f, 1f))
             {
                 SpawnSeed();
             }
@@ -39,7 +42,7 @@ public class SeedCreator : MonoBehaviour
 
         seedInstance.Eaten += OnSeedEaten;
 
-        float randAngle = Random.Range(_minAngle, _maxAngle);
+        float randAngle = UnityEngine.Random.Range(_minAngle, _maxAngle);
         var direction = Quaternion.Euler(0f, 0f, randAngle) * Vector2.down;
         seedInstance.ApplyForce(direction * _throwForce);
     }

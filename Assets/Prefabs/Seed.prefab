@@ -199,3 +199,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minLifeTime: 8
   maxLifeTime: 12
+  collectSounds:
+  - {fileID: 8300000, guid: 8582c68704a6ae04fb51bcce1dc07abc, type: 3}
+  - {fileID: 8300000, guid: e5803593471508c4b8fd3d3c40ea47f8, type: 3}
+  - {fileID: 8300000, guid: dcfae6c2360f81d4fbb1bb059b5c57af, type: 3}
+  - {fileID: 8300000, guid: 78c80932604982f4e8d9b940b7840318, type: 3}
