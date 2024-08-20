@@ -1287,7 +1287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3653653604879043921, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
       propertyPath: spawnUnderCollected
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7972933713398735920, guid: 3cea033ac22636848aa8fad87c32066c, type: 3}
       propertyPath: m_SortingOrder
