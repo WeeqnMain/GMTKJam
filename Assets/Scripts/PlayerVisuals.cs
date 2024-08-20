@@ -1,5 +1,4 @@
 using System;
-using TMPro;
 using UnityEngine;
 
 public class PlayerVisuals : MonoBehaviour
@@ -7,6 +6,7 @@ public class PlayerVisuals : MonoBehaviour
     private const string IsGliding = nameof(IsGliding);
     private const string IsFalling = nameof(IsFalling);
     private const string IsWalking = nameof(IsWalking);
+    private const string Death = nameof(Death);
 
     [SerializeField] private PlayerController player;
 
@@ -70,6 +70,19 @@ public class PlayerVisuals : MonoBehaviour
     private void OnLand()
     {
         _animator.SetBool(IsFalling, false);
+    }
+
+    private Action callback;
+    public void StartDeathAnimation(Action callback)
+    {
+        this.callback = callback;
+        _animator.SetTrigger(Death);
+    }
+
+    public void AnimationEvent_DeathAnimationEnd()
+    {
+        callback?.Invoke();
+        callback = null;
     }
 
     public void AnimationEvent_FootstepParticleEmmit()
