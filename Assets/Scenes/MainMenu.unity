@@ -5093,7 +5093,6 @@ GameObject:
   - component: {fileID: 136079682}
   - component: {fileID: 136079685}
   - component: {fileID: 136079686}
-  - component: {fileID: 136079686}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -5164,7 +5163,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 136079683}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 136079686}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: load
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &136079683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5224,6 +5235,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &136079686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136079680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0c25bc17225374dae931792f9222a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &155461580
 GameObject:
   m_ObjectHideFlags: 0
