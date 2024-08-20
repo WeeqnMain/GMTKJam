@@ -4,7 +4,7 @@ public class BirdNPC : MonoBehaviour
 {
     public enum BirdColor
     {
-        Blue,
+        Red,
         Cyan,
     }
 
