@@ -13,15 +13,13 @@ public class Win : MonoBehaviour
     private void Awake()
     {
         seedCreator = FindObjectOfType<SeedCreator>();
-        image = GetComponent<Image>();
-        image.enabled = false;
     }
 
     private void Update()
     {
         if(seedCreator.SeedsEaten >= requiredSeeds)
         {
-            image.enabled = true;
+            SceneLoader.LoadScene("LevelCompleted");
         }
     }
 }

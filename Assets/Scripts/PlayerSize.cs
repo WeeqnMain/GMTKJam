@@ -4,16 +4,15 @@ using UnityEngine;
 public class PlayerSize : MonoBehaviour
 {
     [SerializeField] private PlayerStats stats;
+    [SerializeField] public Transform spriteTransform;
     [SerializeField] private float initialSpeed;
     [SerializeField] private float scaleIncrease;
     [SerializeField] private float speedDecrease;
   
     private float cooldown;
-    private Rigidbody2D rigidbody;
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
         stats.BaseSpeed = initialSpeed;
     }
   
@@ -25,7 +24,8 @@ public class PlayerSize : MonoBehaviour
     public void IncreaseSize()
     {
         cooldown = 0.5f;
-        gameObject.transform.localScale += Vector3.one * scaleIncrease;
         stats.BaseSpeed -= speedDecrease;
+
+        spriteTransform.localScale += Vector3.one * scaleIncrease;
     }
 }

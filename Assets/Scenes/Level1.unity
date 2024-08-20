@@ -2853,13 +2853,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 115070179427837501, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
+      propertyPath: spriteObj
+      value: 
+      objectReference: {fileID: 1485960627}
+    - target: {fileID: 115070179427837501, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
       propertyPath: outputText
       value: 
       objectReference: {fileID: 1152143135}
+    - target: {fileID: 115070179427837501, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
+      propertyPath: spriteTransform
+      value: 
+      objectReference: {fileID: 1871440219}
     - target: {fileID: 1649021638336209625, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1745041930}
+    - target: {fileID: 2079474766448616866, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6916703390337596008, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
       propertyPath: m_Name
       value: Player
@@ -11889,6 +11901,11 @@ AudioSource:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5292141887450295066, guid: 499a7f6539ebf4c45b3f4ba94d4021eb, type: 3}
   m_PrefabInstance: {fileID: 1984270853}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1871440219 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1618858128815241320, guid: df4ab56ac41bfe848b35fb4595f88952, type: 3}
+  m_PrefabInstance: {fileID: 518481565}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1880722460
 PrefabInstance:
