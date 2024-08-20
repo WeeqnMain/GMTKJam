@@ -21221,7 +21221,7 @@ Transform:
   m_GameObject: {fileID: 1227831944}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.5507703, y: 0.88747317, z: 0}
+  m_LocalPosition: {x: 4.31, y: 4.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46863,8 +46863,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f988664545ee340acd63819cb3d272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  birdColor: 4
-  animationType: 0
+  birdColor: 1
+  animationType: 1
+  flyingSpeed: 2.25
+  pathEnd: {fileID: 1227831946}
 --- !u!1 &2110665334
 GameObject:
   m_ObjectHideFlags: 0
